@@ -412,9 +412,64 @@
 // );
 // ---------------------------------------------------------------------
 // 在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组
-function append(arr, item) {
-  let temp = arr.slice(0)
-  temp.push(item)
-  return temp
-}
-console.log(append([1, 2], 3));
+// function append(arr, item) {
+//   let temp = arr.slice(0)
+//   temp.push(item)
+//   return temp
+// }
+// console.log(append([1, 2], 3));
+// ---------------------------------------------------------------------
+// 斐波那契数列
+// function fibonacci(n) {
+
+//   return n <= 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
+// }
+// console.log(fibonacci(6));
+// ---------------------------------------------------------------------
+
+// 实现一个打点计时器，要求
+// 1、从 start 到 end（包含 start 和 end），每隔 100 毫秒 console.log 一个数字，每次数字增幅为 1
+// 2、返回的对象中需要包含一个 cancel 方法，用于停止定时操作
+// 3、第一个数需要立即输出
+// function count(start, end) {
+//   let num = start + 1
+//   console.log(start);
+//   let timer = setInterval(function () {
+//     if (num > end) {
+//       clearInterval(timer)
+//     } else {
+//       console.log(num);
+//       num++
+//     }
+//   }, 1000)
+//   return {
+//     cancel: function () {
+//       clearInterval(timer)
+//     }
+//   }
+// }
+// let target = count(1, 5)
+// // 四秒时调用取消方法，结束定时器
+// setTimeout(function () { target.cancel() }, 4000)
+// ---------------------------------------------------------------------
+
+
+
+// 实现 fizzBuzz 函数，参数 num 与返回值的关系如下：
+// 1、如果 num 能同时被 3 和 5 整除，返回字符串 fizzbuzz
+// 2、如果 num 能被 3 整除，返回字符串 fizz
+// 3、如果 num 能被 5 整除，返回字符串 buzz
+// 4、如果参数为空或者不是 Number 类型，返回 false
+// 5、其余情况，返回参数 num
+// function fizzBuzz(num) {
+//   if (num % 3 == 0 && num % 5 == 0)
+//     return "fizzbuzz";
+//   else if (num % 3 == 0)
+//     return "fizz";
+//   else if (num % 5 == 0)
+//     return "buzz";
+//   else if (num == null || typeof num != "number")
+//     return false;
+//   else return num;
+// }
+
