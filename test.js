@@ -1,5 +1,4 @@
 // ---------------------------------------------------------------------
-
 // 数组右移
 // let arr = [1, 2, 3, 4, 5]
 // console.log(arr);
@@ -7,8 +6,6 @@
 //   // arr.push(arr.shift())
 //   arr.unshift(arr.pop())
 //   console.log(arr);
-//   console.log('----------------------');
-
 // }, 2000)
 // ---------------------------------------------------------------------
 // promise实现延迟输出
@@ -246,21 +243,178 @@
 // console.log(sum(10000));
 // ---------------------------------------------------------------------
 // 判断字符串中出现最多次数的字符，以及次数
-function most(str) {
-  let maxItem = ''
-  let maxTime = 0
-  let time = 0
-  for (element of str) {
-    for (item of str) {
-      if (item == element) time++
-    }
-    if (time > maxTime) {
-      maxItem = element
-      maxTime = time
-    }
-    time = 0
-  }
+// function most(str) {
+//   let maxItem = ''
+//   let maxTime = 0
+//   let time = 0
+//   for (element of str) {
+//     for (item of str) {
+//       if (item == element) time++
+//     }
+//     if (time > maxTime) {
+//       maxItem = element
+//       maxTime = time
+//     }
+//     time = 0
+//   }
 
-  return { maxItem, maxTime }
+//   return { maxItem, maxTime }
+// }
+// console.log(most('1123223123asdad阿瑟东的哇恶其啊啊啊啊啊啊啊啊啊啊33'));
+// ---------------------------------------------------------------------
+// 统计某一字符或字符串在另一个字符串中出现的次数
+// function appear(str, targetStr) {
+//   let time = 0
+//   while (targetStr.indexOf(str) != -1) {
+//     time++
+//     targetStr = targetStr.slice(targetStr.indexOf(str) + 1)
+//   }
+//   return time
+// }
+
+// let i = 'w11'
+// let j = '1231w11w123ww33323w112w112312'
+// console.log(
+//   appear(i, j)
+// );
+// ---------------------------------------------------------------------
+// 对 [49, 38, 65, 97, 76, 13, 27, 49]进行冒泡排序
+// let arr = [49, 38, 65, 97, 76, 13, 27, 49]
+// for (let i = 0; i < arr.length; i++) {
+//   for (let j = 0; j < arr.length - i - 1; j++) {
+//     if (arr[j] > arr[j + 1]) {
+//       [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+//     }
+//   }
+// }
+// console.log(arr);
+// ---------------------------------------------------------------------
+// 给定一个数组，求它的最大值/最小值
+// let arr = [49, 38, 65, 97, 76, 13, 27, 49]
+// let max = Math.max(...arr)
+// let min = Math.min(...arr)
+// console.log(max, min);
+
+
+
+// ---------------------------------------------------------------------
+// console.log([typeof null, null instanceof Object]);
+// ---------------------------------------------------------------------
+// 数组查找
+// let arr = [{ name: 1, age: 12 }, 6]
+// let item = { name: 1, age: 12 }
+// console.log(arr.indexOf([item]));
+// arr.forEach(item=>{
+//   if(item.name=='1'){
+//       alert('存在这个元素');
+//   }
+// })
+// ---------------------------------------------------------------------
+// 
+// var a = 1;
+// var b = [];
+// var c = '';
+// var d = true;
+// console.log((a || b));
+// ---------------------------------------------------------------------
+
+// [1,2,3,4,5] 这个数组每一项乘以10 然后过滤大于20的然后再求和
+// let arr = [1, 2, 3, 4, 5]
+// console.log(
+//   arr.map(item => item *= 10).filter(item => item > 20).reduce((total, num) => total + num)
+// );
+
+// ---------------------------------------------------------------------
+//  根据id去重 
+// let arr = [{ id: 1 }, { id: 2 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 1 }, { id: 3 }]
+// let result = []
+// ------------------------
+// 使用for循环
+// for (var i = 0; i < arr.length; i++) {
+//   for (var j = i + 1; j < arr.length;) {
+//     if (arr[i].id == arr[j].id) { 
+//       arr.splice(j, 1); 
+//     } else {
+//       j++;
+//     }
+//   }
+// }
+// console.log(arr);
+// ------------------------
+// 使用for循环
+// for (item of arr) {
+//   let total = 0
+//   for (el of result) {
+//     if (el.id == item.id) total++
+//   }
+//   if (total == 0) result.push(item)
+// }
+// console.log(result);
+// ------------------------
+// 方法一：
+// result = arr.filter((item, index) => {
+//   return arr.findIndex(el => el.id == item.id) === index
+// })
+// console.log(result);
+// ------------------------
+// 方法二：
+// let obj = {}
+// result = arr.reduce((cur, next) => {
+//   obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
+//   return cur;
+// }, [])
+// console.log(result);
+
+
+// ---------------------------------------------------------------------
+// Math
+// let num = 2.3
+// console.log(
+//   Math.floor(num),// 向下取整
+//   Math.round(num),// 四舍五入
+//   Math.ceil(num),// 向上取整
+//   Math.abs(num)// 绝对值
+// );
+// ---------------------------------------------------------------------
+// 判断是不是子字符串
+// let str = '123123'
+// let target = '233'
+// function sonStr(str, target) {
+//   if (target == '') return true
+//   if (str.indexOf(target[0]) != -1) {
+//     return sonStr(str.slice(str.indexOf(target[0]) + 1), target.slice(1))
+//   } else { return false }
+// }
+// console.log(
+//   sonStr(str, target)
+// );
+// ---------------------------------------------------------------------
+// 移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组
+// function remove(arr, item) {
+//   return arr.filter(el => { return el != item })
+// }
+// console.log(remove([1, 2, 3, 4, 5], 2));
+// ---------------------------------------------------------------------
+// 移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回
+// function removeWithoutCopy(arr, item) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] == item) {
+//       arr.splice(i, 1)
+//       i--
+//     }
+//   }
+//   return arr
+// }
+// // console.log();
+// console.log(
+//   removeWithoutCopy([1, 2, 3, 4, 2, 2, 5], 2)
+
+// );
+// ---------------------------------------------------------------------
+// 在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组
+function append(arr, item) {
+  let temp = arr.slice(0)
+  temp.push(item)
+  return temp
 }
-console.log(most('1123223123asdad阿瑟东的哇恶其啊啊啊啊啊啊啊啊啊啊33'));
+console.log(append([1, 2], 3));
