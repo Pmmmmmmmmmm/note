@@ -364,6 +364,12 @@
 //   return cur;
 // }, [])
 // console.log(result);
+// ------------------------
+// 方法三：
+// let m = new Map()
+// result = arr.filter(item => !m.has(item.id) && m.set(item.id))
+// console.log(result);
+
 
 
 // ---------------------------------------------------------------------
@@ -472,4 +478,186 @@
 //     return false;
 //   else return num;
 // }
+// ---------------------------------------------------------------------
+// 将数组 arr 中的元素作为调用函数 fn 的参数
+// function fn(greeting, name, punctuation) { return greeting + ', ' + name + (punctuation || '!'); }
+// let arr = ['Hello', 'Ellie', '!']
+// function argsAsArray(fn, arr) {
+//   return fn(...arr)
+// }
+// console.log(argsAsArray(fn, arr));
+// ---------------------------------------------------------------------
 
+
+// 改变函数上下文
+// 方法一:直接将fn挂载到obj对象上
+
+// function speak(fn, obj) {
+//     obj.fn = fn
+//     return obj.fn()
+// }
+// 方法二:使用apply
+
+
+// function speak(fn, obj) {
+//     return fn.apply(obj)
+// }
+// 方法三:使用call
+
+
+// function speak(fn, obj) {
+//     return fn.call(obj)
+// }
+// 方法四:使用bind
+
+
+// function speak(fn, obj) {
+//     return fn.bind(obj)()
+// }
+// ---------------------------------------------------------------------
+// 实现函数 functionFunction，调用之后满足如下条件：
+// 1、返回值为一个函数 f
+// 2、调用返回的函数 f，返回值为按照调用顺序的参数拼接，拼接字符为英文逗号加一个空格，即 ', '
+// 3、所有函数的参数数量为 1，且均为 String 类型
+
+// function functionFunction(str) {
+//   str += ','
+//   return function (str1) {
+//     return str += str1
+//   }
+// }
+// console.log(
+//   functionFunction(1)(222)
+// );
+// ---------------------------------------------------------------------
+// 数组打平
+// [1,[2,3],[[4],[5,6]]]变成[1,2,3,4,5,6]
+// let arr = [1, [2, 3], [[4], [5, 6]]]
+// let temp = []
+// function flat(arr) {
+//   let flag = true
+//   while (flag) {
+//     flag = !arr.every(item => !Array.isArray(item))
+//     for (index in arr) {
+//       Array.isArray(arr[index]) ? arr.splice(index, 1, ...arr[index]) : null
+//     }
+//   }
+//   return arr
+// }
+// console.log(
+//   flat(arr)
+// );
+
+// ---------------------------------------------------------------------
+
+// 00~04=>秒、分、时、天、月
+// let arr = [
+//   { isLimit: "00", reqNum: 4, timeUnit: "00" },
+//   { isLimit: "00", reqNum: 2, timeUnit: "01" },
+//   { isLimit: "00", reqNum: 3, timeUnit: "02" },
+//   { isLimit: "00", reqNum: 11, timeUnit: "03" },
+//   { isLimit: "00", reqNum: 13, timeUnit: "04" }]
+
+// function compare(key) {
+//   return function (value1, value2) {
+//     var val1 = value1[key];
+//     var val2 = value2[key];
+//     return val1 - val2;
+//   }
+// }
+
+// function formatting(arr) {
+//   let temp = arr.slice(0)
+//   temp.sort(compare('timeUnit'))
+//   for (let index = 0; index < temp.length - 1; index++) {
+//     if (temp[index].reqNum > temp[index + 1].reqNum) {
+//       return arr.indexOf(temp[index]) + ',' + arr.indexOf(temp[index + 1])
+//     }
+//   }
+//   return 'pass'
+// }
+// ---------------------------------------------------------------------
+
+// function formatting(arr) {
+//   for (let index = 0; index < arr.length - 1; index++) {
+//     for (let innerIndex = index + 1; innerIndex < arr.length - 1; innerIndex++) {
+
+//       let flag =
+//         arr[index].timeUnit > arr[innerIndex].timeUnit
+//         &&
+//         arr[index].reqNum >= arr[innerIndex].reqNum
+//         ||
+//         arr[index].timeUnit < arr[innerIndex].timeUnit
+//         &&
+//         arr[index].reqNum <= arr[innerIndex].reqNum
+//       if (flag) {
+//       } else {
+//         return '' + index + ',' + innerIndex
+//       }
+
+//     }
+//   }
+//   return true
+// }
+// console.log(formatting(arr));
+//
+// ---------------------------------------------------------------------
+// 获取URl
+// let sUrl = 'http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe'
+// let key = 'key'
+// function getUrlParam(sUrl, sKey) {
+//   let arr = sUrl.split("?")[1].split("#")[0].split("&"), obj = {};
+//   arr.forEach(item => {
+//     let [key, value] = item.split("=");
+//     if (key in obj) {
+//       obj[key] = [].concat(obj[key], value);
+//     } else {
+//       obj[key] = value
+//     }
+//   })
+//   return sKey ? obj[sKey] || "" : obj;
+// }
+// console.log(
+//   getUrlParam(sUrl, key)
+
+// );
+// ------------------------------
+// css 中经常有类似 background-image 这种通过 - 连接的字符，通过 javascript 设置样式的时候需要将这种样式转换成 backgroundImage 驼峰格式，请完成此转换功能
+// 1. 以 - 为分隔符，将第二个起的非空单词首字母转为大写
+// 2. -webkit-border-image 转换后的结果为 webkitBorderImage
+// let sName = '-webkit--border--------image'
+// function cssStyle2DomStyle(sName) {
+//   sName = sName.split('-')
+//   for (let index = 0; index < sName.length; index++) {
+//     if (sName[index] == '') {
+//       sName.splice(index, 1)
+//       index--
+//     }
+//   }
+//   for (let index = 1; index < sName.length; index++) {
+//     sName[index] = sName[index].slice(0, 1).toUpperCase() + sName[index].slice(1)
+//   }
+
+
+//   return sName.join('')
+// }
+// cssStyle2DomStyle(sName)
+// ----------------------
+// 统计字符串中每个字符的出现频率，返回一个 Object，key 为统计字符，value 为出现频率
+// 1. 不限制 key 的顺序
+// 2. 输入的字符串参数不会为空
+// 3. 忽略空白字符
+// let str = 'hello world'
+// function count(str) {
+//   let obj = {}
+//   for (let index = 0; index < str.length; index++) {
+//     if (str[index] == ' ') continue
+//     if (str[index] in obj) {
+//       obj[str[index]]++
+//     } else {
+//       obj[str[index]] = 1
+//     }
+//   }
+//   return obj
+// }
+// console.log(count(str));
