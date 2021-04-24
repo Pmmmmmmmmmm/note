@@ -661,3 +661,49 @@
 //   return obj
 // }
 // console.log(count(str));
+// ----------------------
+// 匹配括号
+// let str = '({[()]})()}'
+// function matchingParentheses(str) {
+//   str = str.split('')
+//   let left = []
+//   let flag = true
+//   str.forEach(el => {
+//     if (el == "(" || el == "{" || el == "[") {
+//       left.push(el)
+//     } else {
+//       if (el == ')' && left[left.length - 1] == '(') {
+//         left.pop()
+//       } else if (el == ']' && left[left.length - 1] == '[') {
+//         left.pop()
+//       } else if (el == '}' && left[left.length - 1] == '{') {
+//         left.pop()
+//       } else {
+//         flag = false
+//       }
+//     }
+//   }
+//   );
+//   return flag && left.length == 0
+// }
+// console.log(
+//   matchingParentheses(str)
+// );
+// ----------------------
+// 去除相同且相邻的字符
+// let str = 'abcbbcac'
+// function removeSameAdjacent(str) {
+//   if (typeof str == 'string') {
+//     str = str.split('')
+//   }
+//   for (let index = 0; index < str.length; index++) {
+//     if (str[index] == str[index + 1]) {
+//       str.splice(index, 2)
+//       return removeSameAdjacent(str)
+//     }
+//   }
+//   return str.join('')
+// }
+// let result = removeSameAdjacent(str);
+// console.log(result);
+// ----------------------
